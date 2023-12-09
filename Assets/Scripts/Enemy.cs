@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _speed = 0.5f;
+
+    public event UnityAction Died;
 
     private void Update()
     {
@@ -16,6 +19,7 @@ public class Enemy : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent(out Projectile projectile))
         {
+            Died?.Invoke();
             projectile.Destroy();
         }
 
