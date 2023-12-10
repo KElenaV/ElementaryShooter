@@ -8,11 +8,12 @@ public class Player : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private Projectile[] _projectiles;
+    [SerializeField] private AudioSource _audio;
 
     private PlayerInput _input;
     private float _xBoard = 8f;
     private float _yBoard = 4f;
-    private float _shootDelay = 0.7f;
+    private float _shootDelay = 0.9f;
 
     private void Start()
     {
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
             {
                 projectile.gameObject.SetActive(true);
                 projectile.transform.position = _shootPoint.position;
+                _audio.Play();
             }
         }
     }
